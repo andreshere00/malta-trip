@@ -13,7 +13,7 @@ function toBase64(buffer: ArrayBuffer) {
 }
 
 export async function prepareCurrentPdf(data: PdfData) {
-  const [{ jsPDF }, fontResponse] = await Promise.all([import("jspdf"), fetch("/fonts/RobotoSlab.ttf")]);
+  const [{ jsPDF }, fontResponse] = await Promise.all([import("jspdf"), fetch(`${import.meta.env.BASE_URL}fonts/RobotoSlab.ttf`)]);
   if (!fontResponse.ok) throw new Error("No se pudo cargar la fuente del PDF");
   const doc = new jsPDF({ unit: "mm", format: "a4", compress: true });
   doc.addFileToVFS("RobotoSlab.ttf", toBase64(await fontResponse.arrayBuffer()));
