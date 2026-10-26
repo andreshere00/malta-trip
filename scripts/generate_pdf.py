@@ -189,22 +189,22 @@ def main() -> None:
     summary_rows = [[para("Día", "WhiteText"), para("Tiempo", "WhiteText"), para("Precio / persona", "WhiteText")],
                     [para("Sábado · La Valeta y Birgu", "CardText"), para("09:00–20:30 · 11 h 30 min", "CardText"), para("57–97 €", "CardText")],
                     [para("Domingo · Gozo", "CardText"), para("06:45–22:30 · 15 h 45 min", "CardText"), para("80–105 €", "CardText")],
-                    [para("Lunes · Popeye", "CardText"), para("08:00–17:00 · 9 h", "CardText"), para("70–100 €", "CardText")],
-                    [para("Lunes · Mdina (alternativa)", "CardText"), para("09:00–17:00 · 8 h", "CardText"), para("25–45 €", "CardText")]]
+                    [para("Lunes · Mdina y Rabat", "CardText"), para("09:00–17:00 · 8 h", "CardText"), para("25–45 €", "CardText")],
+                    [para("Lunes · Popeye (alternativa)", "CardText"), para("08:00–17:00 · 9 h", "CardText"), para("70–100 €", "CardText")]]
     table = Table(summary_rows, colWidths=[191, 161, 138], hAlign="LEFT")
     table.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, 0), BURGUNDY), ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT]),
                                ("BOX", (0, 0), (-1, -1), .6, YELLOW), ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
                                ("LEFTPADDING", (0, 0), (-1, -1), 10), ("RIGHTPADDING", (0, 0), (-1, -1), 9),
                                ("TOPPADDING", (0, 0), (-1, -1), 10), ("BOTTOMPADDING", (0, 0), (-1, -1), 10)]))
     story += [table, Spacer(1, 12),
-              para("Total con Popeye: <b>207–302 € por persona</b> y 36 h 15 min de itinerario. Con Mdina: <b>162–247 €</b> y 35 h 15 min. Añadid 5 € si visitáis el Museo Arqueológico Nacional.", "BodyTextCustom"),
+              para("Total con Mdina: <b>162–247 € por persona</b> y 35 h 15 min de itinerario. Con Popeye: <b>207–302 €</b> y 36 h 15 min. Añadid 5 € si visitáis el Museo Arqueológico Nacional.", "BodyTextCustom"),
               para("Los importes son estimaciones para dos adultos que comparten taxis. Incluyen las comidas recomendadas, transporte y entradas del plan; excluyen alojamiento, vuelos, desayuno y bebidas alcohólicas. Confirmad horarios, tarifas y precios de taxi antes de reservar.", "SmallText"),
               Spacer(1, 14), para("Lo esencial", "SectionTitle"),
               para("<b>Viernes 13:</b> llegada por la noche y alojamiento. <b>Comidas:</b> de 13:00 a 15:00. <b>Cenas:</b> de 19:00 a 21:00. <b>Lunes 16:</b> salid con el equipaje desde el apartamento y tomad un taxi al aeropuerto directamente desde la última visita a las 17:00.", "BodyTextCustom"),
               para(f"<b>Airbnb:</b> B Suites, 136 Triq Tigne', Tas-Sliema, Malta · {link('https://www.airbnb.es/trips/v1/1796630891099537374', 'Abrir vuestra reserva')}. El marcador del mapa es aproximado; confirmad el acceso y el check-in en Airbnb.", "BodyTextCustom"),
               PageBreak()]
 
-    story += day_header("La Valeta y Birgu", "Sábado 14 de noviembre", "09:00–20:30 · 11 h 30 min", "57–97 € / persona", "Ferris ≈ 10 €, Concatedral 15 €, comida y cena ≈ 32–72 €. El Museo Arqueológico opcional añade 5 €.")
+    story += day_header("La Valeta y Birgu", "Sábado 14 de noviembre", "09:00–20:30 · 11 h 30 min", "57–97 € / persona", "Ferris ≈ 10 €, Concatedral 15 €, comida y cena ≈ 32–72 €. Incluye el Palacio del Gran Maestre y Lower Barrakka. El Museo Arqueológico opcional añade 5 €.")
     story.append(stop_table(saturday))
     story += [para("Opción: Museo Arqueológico Nacional", "SubTitle"),
               para("Sustituye el Palacio y el paseo de 11:15–13:00 por el Museo de 11:20–12:20 y Palacio con Upper Barrakka de 12:20–13:00. Entrada estimada: 5 €. La comida permanece a las 13:00.", "BodyTextCustom"),
@@ -214,11 +214,11 @@ def main() -> None:
     story.append(stop_table(sunday))
     story += [para("El ferry rápido sale de Sliema a las 06:45 con escala en Buġibba. Para la vuelta se ha previsto Mġarr a las 21:15 y llegada a Sliema a las 22:30. Reservad la ida y la vuelta y comprobad posibles cambios por meteorología.", "SmallText"), PageBreak()]
 
-    story += day_header("Popeye Village o Mdina", "Lunes 16 de noviembre", "Popeye 08:00–17:00 · Mdina 09:00–17:00", "Popeye 70–100 € · Mdina 25–45 €", "Llevad las maletas o mochilas desde el inicio. El plan termina con salida directa al aeropuerto a las 17:00; no se regresa a Sliema.")
-    story += [para("Opción A · Popeye Village y Mellieħa", "SubTitle"), stop_table(popeye),
-              para("Si lleváis maletas grandes, confirmad con Popeye Village si podéis guardarlas durante la visita. Los taxis estimados se comparten entre dos adultos.", "SmallText"),
-              para("Opción B · Mdina y Rabat", "SubTitle"), stop_table(mdina),
-              para("Mdina tiene calles empedradas: con maletas, priorizad un paseo corto o una pausa en Rabat. Salid en taxi hacia el aeropuerto a las 17:00.", "SmallText")]
+    story += day_header("Mdina o Popeye Village", "Lunes 16 de noviembre", "Mdina 09:00–17:00 · Popeye 08:00–17:00", "Mdina 25–45 € · Popeye 70–100 €", "Llevad las maletas o mochilas desde el inicio. El plan termina con salida directa al aeropuerto a las 17:00; no se regresa a Sliema.")
+    story += [para("Opción A (recomendada) · Mdina y Rabat", "SubTitle"), stop_table(mdina),
+              para("Mdina tiene calles empedradas: con maletas, priorizad un paseo corto o una pausa en Rabat. Salid en taxi hacia el aeropuerto a las 17:00.", "SmallText"),
+              para("Opción B (alternativa) · Popeye Village y Mellieħa", "SubTitle"), stop_table(popeye),
+              para("Si lleváis maletas grandes, confirmad con Popeye Village si podéis guardarlas durante la visita. Los taxis estimados se comparten entre dos adultos.", "SmallText")]
 
     story += [para("Dónde comer", "SectionTitle"), para("Cocina, precio medio orientativo por persona, ubicación y reseñas de Google. Las cifras se consultaron el 26 de octubre de 2026 y pueden cambiar.", "SmallText")]
     for heading, options in restaurants.items():
