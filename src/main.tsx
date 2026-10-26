@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { Anchor, ArrowUpRight, BedDouble, BriefcaseBusiness, BusFront, Camera, CarFront, Check, Clock3, Clapperboard, Compass, Download, Footprints, Landmark, MapPin, Moon, Pencil, Plane, Search, Ship, Star, Sun, Ticket, UtensilsCrossed, X } from "lucide-react";
+import { Anchor, ArrowUpRight, BedDouble, BriefcaseBusiness, BusFront, Camera, CarFront, Check, Clock3, Clapperboard, Compass, Download, Footprints, House, Landmark, MapPin, Moon, Pencil, Plane, Search, Ship, Star, Sun, Ticket, UtensilsCrossed, X, type LucideIcon } from "lucide-react";
 import { Map, MapControls, MapMarker, MapRoute, MarkerContent, MarkerPopup, MarkerTooltip } from "@/components/ui/map";
 import { dayMeta, places, routes, sourceLinks, type DayId, type MondayPlan, type SundayPlan, type RouteLine, type Stop } from "@/data";
 import { areas, areaName, type AreaId } from "@/catalog";
@@ -10,6 +10,10 @@ import "./index.css";
 
 type View = "all" | DayId;
 type PhaseFilter = "all" | "morning" | "afternoon";
+const PLACE_ICONS: Record<string, LucideIcon> = {
+  airport: Plane, apartment: House, victoria: BusFront,
+  ...Object.fromEntries(["sliema", "vallettaPier", "lascaris", "cospicua", "bugibba", "mgarr", "cirkewwa", "cominoPier"].map((id) => [id, Ship])),
+};
 type Modal = { type: "event"; stop: Stop; day: DayId } | { type: "bookings" } | { type: "airbnb" } | { type: "restaurants" } | null;
 
 const days: DayId[] = ["sat", "sun", "mon"];
@@ -387,7 +391,7 @@ function App() {
         <div ref={mapPanelRef} className="map-panel" style={{ "--day-color": activeColor } as React.CSSProperties}>
           <div className="map-wrap"><Map key={`${view}-${mondayPlan}-${sundayPlan}-${includeMuseum}-${selectedPlace ?? "overview"}-${cameraRevision}`} center={camera.center} zoom={camera.zoom} theme={theme}>
             {activeRoutes.map(({ day, line }) => <MapRoute key={line.id} coordinates={line.coordinates} color={dayColors[day]} width={line.mode === "ferry" ? 3.5 : 2.5} opacity={view === "all" ? 0.72 : 0.9} dashArray={line.mode === "ferry" ? [1.5, 1.5] : line.mode === "transfer" ? [0.6, 2] : undefined} />)}
-            {visibleStops.map((stop) => { const place = places[stop.place]; const base = stop.place === "apartment" || stop.place === "sliema"; const pinColor = colorFor(place.id); return <MapMarker key={place.id} longitude={place.coordinates[0]} latitude={place.coordinates[1]}><MarkerContent><span className={`pin ${base ? "pin-base" : ""}`} style={{ "--pin-color": pinColor.background, "--pin-foreground": pinColor.foreground } as React.CSSProperties} aria-label={place.name}>{base ? <MapPin size={16} strokeWidth={2.5} /> : view === "all" ? "•" : dayStops[view].findIndex((item) => item.place === stop.place) + 1}</span></MarkerContent><MarkerTooltip>{place.short}</MarkerTooltip><MarkerPopup><div className="popup"><div className="popup-kicker">{view === "all" ? "Parada del viaje" : dayMeta[view].weekday}</div><strong>{place.name}</strong><p>{place.detail}</p></div></MarkerPopup></MapMarker>; })}
+            {visibleStops.map((stop) => { const place = places[stop.place]; const base = stop.place === "apartment" || stop.place === "sliema"; const PlaceIcon = PLACE_ICONS[place.id]; const pinColor = colorFor(place.id); return <MapMarker key={place.id} longitude={place.coordinates[0]} latitude={place.coordinates[1]}><MarkerContent><span className={`pin ${base ? "pin-base" : ""}`} style={{ "--pin-color": pinColor.background, "--pin-foreground": pinColor.foreground } as React.CSSProperties} aria-label={place.name}>{PlaceIcon ? <PlaceIcon size={base ? 17 : 15} strokeWidth={2.2} /> : base ? <MapPin size={16} strokeWidth={2.5} /> : view === "all" ? "•" : dayStops[view].findIndex((item) => item.place === stop.place) + 1}</span></MarkerContent><MarkerTooltip>{place.short}</MarkerTooltip><MarkerPopup><div className="popup"><div className="popup-kicker">{view === "all" ? "Parada del viaje" : dayMeta[view].weekday}</div><strong>{place.name}</strong><p>{place.detail}</p></div></MarkerPopup></MapMarker>; })}
             {ferryPosition && <MapMarker longitude={ferryPosition[0]} latitude={ferryPosition[1]}><MarkerContent><span className="moving-ferry"><Ship size={19} /></span></MarkerContent></MapMarker>}
             <MapControls position="top-right" showZoom showCompass showFullscreen />
           </Map></div>
