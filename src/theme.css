@@ -1,0 +1,156 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --color1: #5c1b35;
+  --color2: #d43f5d;
+  --color3: #f2a772;
+  --color4: #e8d890;
+  --color5: #e2edb7;
+  --background: color-mix(in srgb, var(--color5) 12%, white);
+  --foreground: var(--color1);
+  --card: #ffffff;
+  --card-foreground: var(--color1);
+  --popover: #ffffff;
+  --popover-foreground: var(--color1);
+  --primary: var(--color2);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color4);
+  --secondary-foreground: var(--color1);
+  --muted: color-mix(in srgb, var(--color4) 18%, white);
+  --muted-foreground: color-mix(in srgb, var(--color1) 69%, white);
+  --accent: color-mix(in srgb, var(--color3) 24%, white);
+  --accent-foreground: var(--color1);
+  --destructive: var(--color2);
+  --destructive-foreground: #ffffff;
+  --border: color-mix(in srgb, var(--color1) 16%, white);
+  --input: color-mix(in srgb, var(--color1) 16%, white);
+  --ring: var(--color2);
+  --chart-1: var(--color1);
+  --chart-2: var(--color2);
+  --chart-3: var(--color3);
+  --chart-4: var(--color4);
+  --chart-5: var(--color5);
+  --sidebar: color-mix(in srgb, var(--color4) 8%, white);
+  --sidebar-foreground: var(--color1);
+  --sidebar-primary: var(--color2);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: color-mix(in srgb, var(--color3) 23%, white);
+  --sidebar-accent-foreground: var(--color1);
+  --sidebar-border: color-mix(in srgb, var(--color1) 16%, white);
+  --sidebar-ring: var(--color2);
+  --font-sans: Roboto Slab, ui-serif, serif;
+  --font-serif: Roboto Slab, ui-serif, serif;
+  --font-mono: Roboto Mono, ui-monospace, monospace;
+  --radius: 0.625rem;
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: var(--color1);
+  --shadow-2xs: 0 1px 3px 0px rgb(92 27 53 / .05);
+  --shadow-xs: 0 1px 3px 0px rgb(92 27 53 / .05);
+  --shadow-sm: 0 1px 3px 0px rgb(92 27 53 / .10), 0 1px 2px -1px rgb(92 27 53 / .10);
+  --shadow: 0 1px 3px 0px rgb(92 27 53 / .10), 0 1px 2px -1px rgb(92 27 53 / .10);
+  --shadow-md: 0 1px 3px 0px rgb(92 27 53 / .10), 0 2px 4px -1px rgb(92 27 53 / .10);
+  --shadow-lg: 0 1px 3px 0px rgb(92 27 53 / .10), 0 4px 6px -1px rgb(92 27 53 / .10);
+  --shadow-xl: 0 1px 3px 0px rgb(92 27 53 / .10), 0 8px 10px -1px rgb(92 27 53 / .10);
+  --shadow-2xl: 0 1px 3px 0px rgb(92 27 53 / .25);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --dark-color1: #131112;
+  --dark-color2: #201c1d;
+  --dark-color3: #e18c50;
+  --dark-color4: #e1cc6e;
+  --dark-color5: #caccc2;
+  --background: var(--dark-color1);
+  --foreground: var(--dark-color5);
+  --card: var(--dark-color2);
+  --card-foreground: var(--dark-color5);
+  --popover: var(--dark-color2);
+  --popover-foreground: var(--dark-color5);
+  --primary: var(--dark-color3);
+  --primary-foreground: var(--dark-color1);
+  --secondary: var(--dark-color4);
+  --secondary-foreground: var(--dark-color1);
+  --muted: color-mix(in srgb, var(--dark-color2) 88%, var(--dark-color5));
+  --muted-foreground: color-mix(in srgb, var(--dark-color5) 76%, var(--dark-color2));
+  --accent: color-mix(in srgb, var(--dark-color3) 14%, var(--dark-color2));
+  --accent-foreground: var(--dark-color5);
+  --destructive: var(--dark-color3);
+  --destructive-foreground: var(--dark-color1);
+  --border: color-mix(in srgb, var(--dark-color5) 22%, var(--dark-color2));
+  --input: color-mix(in srgb, var(--dark-color5) 22%, var(--dark-color2));
+  --ring: var(--dark-color4);
+  --chart-1: var(--dark-color1);
+  --chart-2: var(--dark-color2);
+  --chart-3: var(--dark-color3);
+  --chart-4: var(--dark-color4);
+  --chart-5: var(--dark-color5);
+  --sidebar: var(--dark-color2);
+  --sidebar-foreground: var(--dark-color5);
+  --sidebar-primary: var(--dark-color3);
+  --sidebar-primary-foreground: var(--dark-color1);
+  --sidebar-accent: color-mix(in srgb, var(--dark-color3) 14%, var(--dark-color2));
+  --sidebar-accent-foreground: var(--dark-color5);
+  --sidebar-border: color-mix(in srgb, var(--dark-color5) 22%, var(--dark-color2));
+  --sidebar-ring: var(--dark-color4);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground; }
+}
