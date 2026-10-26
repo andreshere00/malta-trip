@@ -170,7 +170,7 @@ h1 { margin: 7px 0 8px; font-size: clamp(35px, 4.2vw, 60px); line-height: 1.06; 
 .airbnb-card > svg:first-child { color: var(--primary); }
 .airbnb-card:hover { background: var(--accent); }
 
-.detail-dialog { width: min(590px, calc(100vw - 24px)); max-height: min(86vh, 820px); padding: 0; overflow: auto; border: 1px solid var(--border); border-radius: 18px; background: var(--popover); color: var(--popover-foreground); box-shadow: var(--shadow-2xl); }
+.detail-dialog { inset: 0; margin: auto; width: min(590px, calc(100vw - 24px)); max-height: min(86vh, 820px); padding: 0; overflow: auto; border: 1px solid var(--border); border-radius: 18px; background: var(--popover); color: var(--popover-foreground); box-shadow: var(--shadow-2xl); }
 .detail-dialog::backdrop { background: rgb(0 0 0 / .58); backdrop-filter: blur(3px); }
 .modal-body { position: relative; padding: 27px; }
 .modal-close { position: absolute; top: 16px; right: 16px; display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--foreground); cursor: pointer; }
