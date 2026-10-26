@@ -77,13 +77,14 @@ export const places: Record<string, Place> = {
 export const dayMeta: Record<DayId, { date: string; weekday: string; title: string; subtitle: string; color: string }> = {
   sat: { date: "14 nov", weekday: "Sábado", title: "La Valeta y Birgu", subtitle: "Visitas 09:00–14:00 y 16:00–20:00", color: "#d43f5d" },
   sun: { date: "15 nov", weekday: "Domingo", title: "Gozo y Victoria", subtitle: "Visitas 09:00–14:00 y 16:00–20:00", color: "#5c1b35" },
-  mon: { date: "16 nov", weekday: "Lunes", title: "Popeye o Mdina", subtitle: "09:00–14:00 · aeropuerto a las 17:00", color: "#f2a772" },
+  mon: { date: "16 nov", weekday: "Lunes", title: "Mdina o Popeye", subtitle: "09:00–14:00 · aeropuerto a las 17:00", color: "#f2a772" },
 };
 
 export const saturday: Stop[] = [
   { id: "sat-out", place: "sliema", time: "09:00", title: "Ferry a La Valeta", description: "Salida desde Sliema Ferries hacia el centro histórico.", phase: "morning", kind: "transport", mode: "ferry", bookingIds: ["vallettaFerry"] },
   { id: "sat-cathedral", place: "cathedral", time: "09:30–11:15", title: "Concatedral de San Juan", description: "Interior barroco y audioguía; el domingo cierra al turismo.", phase: "morning", kind: "monument", bookingIds: ["cathedral"] },
-  { id: "sat-walk", place: "barrakka", time: "11:15–13:00", title: "La Valeta y Upper Barrakka", description: "Calles del centro, Grand Harbour y miradores.", phase: "morning", kind: "leisure", mode: "walk" },
+  { id: "sat-palace", place: "palaceExterior", time: "11:15–12:00", title: "Palacio del Gran Maestre", description: "St George's Square y exterior del palacio, a un paso de la Concatedral.", phase: "morning", kind: "monument", mode: "walk" },
+  { id: "sat-walk", place: "barrakka", time: "12:00–13:00", title: "Upper y Lower Barrakka", description: "Calles del centro y miradores sobre el Grand Harbour.", phase: "morning", kind: "leisure", mode: "walk" },
   { id: "sat-lunch", place: "barrakka", time: "13:00–14:00", title: "Comida en La Valeta", description: "Dos opciones por la zona, desde mercado hasta cocina maltesa.", phase: "morning", kind: "food", restaurantArea: "valletta" },
   { id: "sat-cities", place: "lascaris", time: "15:45", title: "Ferry hacia Cospicua", description: "Embarque en Lascaris, entre las dos franjas de visitas.", phase: "afternoon", kind: "transport", mode: "ferry", bookingIds: ["threeCitiesFerry"] },
   { id: "sat-birgu", place: "birgu", time: "16:00–17:45", title: "Birgu / Vittoriosa", description: "Casco antiguo y frente marítimo al atardecer.", phase: "afternoon", kind: "monument", mode: "walk" },
@@ -95,8 +96,8 @@ export const saturday: Stop[] = [
 export const saturdayWithMuseum: Stop[] = [
   ...saturday.slice(0, 2),
   { id: "sat-museum", place: "museum", time: "11:20–12:20", title: "Museo Arqueológico Nacional", description: "Opción de una hora para ver las piezas prehistóricas de Malta.", phase: "morning", kind: "monument", bookingIds: ["museum"] },
-  { id: "sat-walk-short", place: "barrakka", time: "12:20–13:00", title: "Upper Barrakka", description: "Paseo breve y mirador del Grand Harbour.", phase: "morning", kind: "leisure", mode: "walk" },
-  ...saturday.slice(3),
+  { id: "sat-walk-short", place: "barrakka", time: "12:20–13:00", title: "Palacio y Upper Barrakka", description: "Exterior del palacio y mirador del Grand Harbour.", phase: "morning", kind: "leisure", mode: "walk" },
+  ...saturday.slice(4),
 ];
 
 export const sunday: Stop[] = [
@@ -161,13 +162,13 @@ export const mondayPopeye: Stop[] = [
 export const routes: Record<DayId | "satMuseum" | "monPopeye", RouteLine[]> = {
   sat: [
     { id: "sat-ferry", mode: "ferry", coordinates: [places.sliema.coordinates, places.vallettaPier.coordinates] },
-    { id: "sat-walk", mode: "walk", coordinates: [places.vallettaPier.coordinates, places.cathedral.coordinates, places.barrakka.coordinates, places.lascaris.coordinates] },
+    { id: "sat-walk", mode: "walk", coordinates: [places.vallettaPier.coordinates, places.cathedral.coordinates, places.palaceExterior.coordinates, places.barrakka.coordinates, places.lowerBarrakka.coordinates, places.lascaris.coordinates] },
     { id: "sat-cross", mode: "ferry", coordinates: [[14.5132, 35.894], [14.5204, 35.8858], [14.52, 35.884]] },
     { id: "sat-birgu", mode: "walk", coordinates: [places.cospicua.coordinates, places.birgu.coordinates] },
   ],
   satMuseum: [
     { id: "sat-museum-ferry", mode: "ferry", coordinates: [places.sliema.coordinates, places.vallettaPier.coordinates] },
-    { id: "sat-museum-walk", mode: "walk", coordinates: [places.vallettaPier.coordinates, places.cathedral.coordinates, places.museum.coordinates, places.barrakka.coordinates, places.lascaris.coordinates] },
+    { id: "sat-museum-walk", mode: "walk", coordinates: [places.vallettaPier.coordinates, places.cathedral.coordinates, places.museum.coordinates, places.palaceExterior.coordinates, places.barrakka.coordinates, places.lascaris.coordinates] },
     { id: "sat-museum-cross", mode: "ferry", coordinates: [[14.5132, 35.894], [14.5204, 35.8858], [14.52, 35.884]] },
     { id: "sat-museum-birgu", mode: "walk", coordinates: [places.cospicua.coordinates, places.birgu.coordinates] },
   ],

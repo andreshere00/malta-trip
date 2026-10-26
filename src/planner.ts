@@ -36,11 +36,9 @@ export const emptyEdits: PlannerEdits = { titles: {}, choices: {} };
 
 const alternatives: Record<string, Choice[]> = {
   "sat-cathedral": [
-    { id: "palace-exterior", title: "Palacio del Gran Maestre · exterior", description: "St George's Square y fachada del palacio; paseo sin entrada.", place: "palaceExterior", minutes: 65, min: 0, max: 0, kind: "monument", new: true },
     { id: "sat-museum-choice", title: "Museo Arqueológico Nacional", description: "Colección prehistórica en Republic Street. Confirmad el horario.", place: "museum", minutes: 75, min: 5, max: 5, kind: "monument", bookingIds: ["museum"] },
   ],
   "sat-walk": [
-    { id: "lower-barrakka", title: "Lower Barrakka Gardens", description: "Jardines y mirador sobre la entrada del Grand Harbour.", place: "lowerBarrakka", minutes: 75, min: 0, max: 0, kind: "leisure", new: true },
     { id: "hastings", title: "Hastings Gardens", description: "Paseo por las murallas y vistas a Marsamxett.", place: "hastings", minutes: 80, min: 0, max: 0, kind: "leisure", new: true },
   ],
   "sat-walk-short": [
@@ -105,7 +103,7 @@ export function areaFor(stop: Stop): AreaId { return catalogEvents.find((item) =
 const restaurantPlace: Record<string, string> = { valletta: "barrakka", birgu: "birgu", senglea: "senglea", cospicua: "cospicua", sliema: "sliema", gzira: "g-strand", stjulians: "st-spinola", mellieha: "mellieha", stpauls: "bugibba", mdina: "mdina", rabat: "rabat", marsaxlokk: "marsaxlokk", gozo: "victoria", comino: "cominoPier" };
 function allowedArea(stop: Stop, area: AreaId) {
   if (stop.id.startsWith("sat-")) {
-    if (["sat-cathedral", "sat-walk", "sat-walk-short", "sat-museum", "sat-lunch"].includes(stop.id)) return area === "valletta";
+    if (["sat-cathedral", "sat-palace", "sat-walk", "sat-walk-short", "sat-museum", "sat-lunch"].includes(stop.id)) return area === "valletta";
     if (stop.id === "sat-birgu") return ["birgu", "senglea", "cospicua"].includes(area);
     return ["sliema", "gzira", "stjulians"].includes(area);
   }

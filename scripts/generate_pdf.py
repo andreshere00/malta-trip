@@ -182,7 +182,7 @@ def main() -> None:
 
     story += [Spacer(1, 32), para("MALTA EN TRES DÍAS", "SmallText"),
               para("Tres días entre dos islas.", "CoverTitle"),
-              para("La Valeta, Gozo y una última jornada entre Popeye Village o Mdina. Del viernes 13 al lunes 16 de noviembre de 2026, con base en B Suites, 136 Triq Tigne', Tas-Sliema, Malta.", "Deck"),
+              para("La Valeta, Gozo y una última jornada entre Mdina o Popeye Village. Del viernes 13 al lunes 16 de noviembre de 2026, con base en B Suites, 136 Triq Tigne', Tas-Sliema, Malta.", "Deck"),
               HRFlowable(width="100%", thickness=2, color=PINK), Spacer(1, 20),
               para("Resumen de tiempo y presupuesto", "SectionTitle")]
 
@@ -207,7 +207,7 @@ def main() -> None:
     story += day_header("La Valeta y Birgu", "Sábado 14 de noviembre", "09:00–20:30 · 11 h 30 min", "57–97 € / persona", "Ferris ≈ 10 €, Concatedral 15 €, comida y cena ≈ 32–72 €. El Museo Arqueológico opcional añade 5 €.")
     story.append(stop_table(saturday))
     story += [para("Opción: Museo Arqueológico Nacional", "SubTitle"),
-              para("Sustituye el paseo de 11:15–13:00 por el Museo de 11:20–12:20 y Upper Barrakka de 12:20–13:00. Entrada estimada: 5 €. La comida permanece a las 13:00.", "BodyTextCustom"),
+              para("Sustituye el Palacio y el paseo de 11:15–13:00 por el Museo de 11:20–12:20 y Palacio con Upper Barrakka de 12:20–13:00. Entrada estimada: 5 €. La comida permanece a las 13:00.", "BodyTextCustom"),
               para("El ferry a Cospicua y el regreso cruzan el Grand Harbour por mar. Confirmad las salidas de invierno; las rutas del mapa son esquemáticas.", "SmallText"), PageBreak()]
 
     story += day_header("Gozo y Victoria", "Domingo 15 de noviembre", "06:45–22:30 · 15 h 45 min", "80–105 € / persona", "Ferry rápido ida y vuelta 17 €, Ġgantija 10 €, autobuses ≈ 6–8 €, taxi compartido ≈ 13–18 € por persona, comidas ≈ 33–49 €.")

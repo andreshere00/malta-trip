@@ -132,7 +132,7 @@ function pointOnPath(path: [number, number][], fraction: number): [number, numbe
 
 function App() {
   const [view, setView] = useState<View>("all");
-  const [mondayPlan, setMondayPlan] = useState<MondayPlan>("popeye");
+  const [mondayPlan, setMondayPlan] = useState<MondayPlan>("mdina");
   const [sundayPlan, setSundayPlan] = useState<SundayPlan>("gozo");
   const [includeMuseum, setIncludeMuseum] = useState(false);
   const [phaseFilter, setPhaseFilter] = useState<PhaseFilter>("all");
@@ -339,7 +339,7 @@ function App() {
         <div>
           <div className="eyebrow">El viaje, de un vistazo</div>
           <h1 id="page-title">Tres días para descubrir Malta.</h1>
-          <p>La Valeta el sábado, Gozo o una excursión alternativa el domingo, y Popeye Village o Mdina el lunes. Elegid las visitas y restaurantes para previsualizar rutas, horarios y costes.</p>
+          <p>La Valeta el sábado, Gozo o una excursión alternativa el domingo, y Mdina o Popeye Village el lunes. Elegid las visitas y restaurantes para previsualizar rutas, horarios y costes.</p>
         </div>
         <div className="intro-actions"><div className="time-guide" aria-label="Horarios importantes"><div><Clock3 size={17} /><span><strong>Visitas</strong><small>09:00–14:00 · 16:00–20:00</small></span></div><div><UtensilsCrossed size={17} /><span><strong>Comidas</strong><small>13:00–15:00 · 19:00–21:00</small></span></div><div className="time-guide-departure"><BriefcaseBusiness size={17} /><span><strong>Lunes · salida 17:00</strong><small>Al aeropuerto, con equipaje</small></span></div></div><div className="pdf-actions"><button className="download-button" type="button" onClick={downloadPdf} disabled={pdfBusy}><Download size={17} /> {pdfBusy ? "Preparando PDF…" : pdfHref ? "Actualizar PDF personalizado" : "Preparar PDF personalizado"}</button>{pdfHref && <a className="prepared-pdf-link" href={pdfHref} download="itinerario-malta-personalizado-13-16-noviembre-2026.pdf"><Download size={15} /> Descargar PDF preparado</a>}<a className="base-pdf-link" href={`${import.meta.env.BASE_URL}itinerario-malta-2026.pdf`} download="itinerario-malta-base-13-16-noviembre-2026.pdf">Descargar PDF original</a>{pdfError && <span className="pdf-error" role="alert">{pdfError}</span>}</div></div>
       </section>
